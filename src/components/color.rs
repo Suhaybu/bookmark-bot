@@ -8,7 +8,7 @@ use twilight_model::channel::message::{
 };
 
 use async_trait::async_trait;
-use twilight_model::channel::message::{ReactionType};
+use twilight_model::channel::message::ReactionType;
 use twilight_model::http::interaction::{InteractionResponse, InteractionResponseType};
 use twilight_model::id::Id;
 use twilight_util::builder::InteractionResponseDataBuilder;
@@ -52,11 +52,15 @@ impl ComponentTrait for Color {
             })
         } else {
             let Some(Component::ActionRow(row)) = input.message.unwrap().components.last() else {
-                    return Err(InteractionError::WorkerError("No components found".to_string()))
-                };
-            let Some(Component::Button(Button {url, ..})) = row.components.last() else {
-                    return Err(InteractionError::WorkerError("No components found".to_string()))
-                };
+                return Err(InteractionError::WorkerError(
+                    "No components found".to_string(),
+                ));
+            };
+            let Some(Component::Button(Button { url, .. })) = row.components.last() else {
+                return Err(InteractionError::WorkerError(
+                    "No components found".to_string(),
+                ));
+            };
             let url = {
                 let u = url.as_ref().unwrap();
                 let (_, data) = u.split_at(29);
@@ -69,9 +73,9 @@ impl ComponentTrait for Color {
                         label: None,
                         custom_id: Some(format!("color:5793266:{url}", url = url)),
                         emoji: Some(ReactionType::Custom {
-                            id: Id::new(1086977694312439869),
+                            id: Id::new(1184416010254684201),
                             name: Some("bk_blurple".to_string()),
-                            animated: false
+                            animated: false,
                         }),
                         url: None,
                         disabled: false,
@@ -82,9 +86,9 @@ impl ComponentTrait for Color {
                         custom_id: Some(format!("color:15548997:{url}", url = url)),
                         // <:bk_red:1086977702386466867>
                         emoji: Some(ReactionType::Custom {
-                            id: Id::new(1086977702386466867),
+                            id: Id::new(1184416103464714300),
                             name: Some("bk_red".to_string()),
-                            animated: false
+                            animated: false,
                         }),
                         url: None,
                         disabled: false,
@@ -95,9 +99,9 @@ impl ComponentTrait for Color {
                         custom_id: Some(format!("color:5763719:{url}", url = url)),
                         // <:bk_green:1086977699488223384>
                         emoji: Some(ReactionType::Custom {
-                            id: Id::new(1086977699488223384),
+                            id: Id::new(1184416108351070250),
                             name: Some("bk_green".to_string()),
-                            animated: false
+                            animated: false,
                         }),
                         url: None,
                         disabled: false,
@@ -108,9 +112,9 @@ impl ComponentTrait for Color {
                         label: None,
                         custom_id: Some(format!("color:16705372:{url}", url = url)),
                         emoji: Some(ReactionType::Custom {
-                            id: Id::new(1086977704194216066),
+                            id: Id::new(1184416111316435045),
                             name: Some("bk_yellow".to_string()),
-                            animated: false
+                            animated: false,
                         }),
                         url: None,
                         disabled: false,
@@ -121,9 +125,9 @@ impl ComponentTrait for Color {
                         label: None,
                         custom_id: Some(format!("color:15418782:{url}", url = url)),
                         emoji: Some(ReactionType::Custom {
-                            id: Id::new(1086977696216645657),
+                            id: Id::new(1184416105251471480),
                             name: Some("bk_fucahsia".to_string()),
-                            animated: false
+                            animated: false,
                         }),
                         url: None,
                         disabled: false,
